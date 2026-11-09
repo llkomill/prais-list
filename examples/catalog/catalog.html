@@ -1,0 +1,20 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="../../assets/css/fonts.css"><link rel="stylesheet" href="style.css"><title>Каталог: Мошина+</title></head><body>
+<div id="h"></div><main><section class="sec"><h1 style="font-size:clamp(30px,4.6vw,60px)">Каталог</h1>
+<div class="filters">
+<label>Поиск<input id="q" type="search" placeholder="Модель или марка"></label>
+<label>Марка<select id="brand"><option value="">Все</option></select></label>
+<label>Кузов<select id="body"><option value="">Все</option><option>Седан</option><option>Кроссовер</option><option>Хэтчбек</option></select></label>
+<label>Цена до<select id="max"><option value="">Любая</option><option value="150000">150 000 сом.</option><option value="250000">250 000 сом.</option><option value="350000">350 000 сом.</option></select></label>
+</div><p class="count" id="cnt" role="status"></p><div class="grid" id="list"></div></section></main><div id="f"></div>
+<script src="shared.js"></script><script src="../_shared/demo.js"></script>
+<script>
+h.innerHTML=HEAD(1);f.innerHTML=FOOT;
+const qEl=document.getElementById('q'),bEl=document.getElementById('brand'),boEl=document.getElementById('body'),mEl=document.getElementById('max');
+bEl.innerHTML+=[...new Set(CARS.map(c=>c.brand))].map(b=>`<option>${b}</option>`).join('');
+const p=new URLSearchParams(location.search);if(p.get('body'))boEl.value=p.get('body');
+function draw(){const q=qEl.value.trim().toLowerCase();
+ const r=CARS.filter(c=>(c.brand+' '+c.model).toLowerCase().includes(q)&&(!bEl.value||c.brand===bEl.value)&&(!boEl.value||c.body===boEl.value)&&(!mEl.value||c.price<=+mEl.value));
+ cnt.textContent='Найдено: '+r.length;
+ list.innerHTML=r.map(card).join('')||'<p class="empty">Ничего не нашлось. Измените условия поиска.</p>'}
+[qEl,bEl,boEl,mEl].forEach(e=>e.addEventListener('input',draw));draw();
+</script></body></html>

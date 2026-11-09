@@ -1,0 +1,14 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="../../assets/css/fonts.css"><link rel="stylesheet" href="style.css"><title>Мошина+: автомобили с проверкой</title></head><body>
+<div id="h"></div><main>
+<section class="hero"><h1>Проверенные автомобили в&nbsp;Душанбе</h1><p>Каждая машина проходит диагностику по 120 пунктам. Найдите свою и оставьте заявку на просмотр.</p><a class="btn" href="catalog.html">Открыть каталог</a><div class="art" id="art"></div></section>
+<section class="sec"><h2>Выберите тип кузова</h2><div class="cats" id="cats"></div></section>
+<section class="sec" style="padding-top:0"><h2>Новые поступления</h2><div class="grid" id="new"></div></section>
+</main><div id="f"></div>
+<script src="shared.js"></script><script src="../_shared/demo.js"></script>
+<script>
+h.innerHTML=HEAD(0);f.innerHTML=FOOT;
+art.innerHTML=carSvg({...CARS[3],color:'#FF7A1A'});
+const bodies=['Седан','Кроссовер','Хэтчбек'];
+cats.innerHTML=bodies.map(b=>`<a class="cat" href="catalog.html?body=${b}"><h3>${b}</h3>${carSvg(CARS.find(c=>c.body===b))}<span>${CARS.filter(c=>c.body===b).length} авто</span></a>`).join('');
+document.getElementById('new').innerHTML=[...CARS].sort((a,b)=>b.year-a.year).slice(0,4).map(card).join('');
+</script></body></html>

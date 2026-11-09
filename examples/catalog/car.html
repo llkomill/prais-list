@@ -1,0 +1,11 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="../../assets/css/fonts.css"><link rel="stylesheet" href="style.css"><title>Автомобиль: Мошина+</title></head><body>
+<div id="h"></div><main><section class="sec"><a class="back" href="catalog.html">← В каталог</a><div class="detail" id="d"></div></section></main><div id="f"></div>
+<script src="shared.js"></script><script src="../_shared/demo.js"></script>
+<script>
+h.innerHTML=HEAD(1);f.innerHTML=FOOT;
+const c=CARS.find(x=>x.id==new URLSearchParams(location.search).get('id'))||CARS[0];
+document.title=c.brand+' '+c.model+': Мошина+';
+d.innerHTML=`<div class="pic">${carSvg(c)}</div><div><h1 style="font-size:clamp(28px,3.8vw,50px)">${c.brand} ${c.model}</h1><div class="price">${som(c.price)}</div>
+<dl><dt>Год</dt><dd>${c.year}</dd><dt>Пробег</dt><dd>${c.km.toLocaleString('ru-RU')} км</dd><dt>Кузов</dt><dd>${c.body}</dd><dt>Топливо</dt><dd>${c.fuel}</dd></dl>
+<form data-demo><h3>Записаться на просмотр</h3><label>Имя<input required></label><label>Телефон<input required type="tel" placeholder="+992"></label><button class="btn">Отправить заявку</button></form></div>`;
+</script></body></html>

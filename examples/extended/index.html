@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Гуфтор: школа английского языка</title>
+<link rel="stylesheet" href="../../assets/css/fonts.css">
+<style>
+:root{--ind:#2A2789;--sun:#FFCF3F;--soft:#F2F2FB;--ink:#17163F;--muted:#5C5B80;--line:#DCDCEE;--pad:clamp(18px,5vw,80px)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:Manrope,sans-serif;color:var(--ink);background:#fff;font-size:17px;line-height:1.55;overflow-x:hidden}
+a{color:inherit;text-decoration:none}ul{list-style:none}button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+h1{font-size:clamp(40px,6vw,76px);line-height:1.06;letter-spacing:-.03em;font-weight:800}
+h2{font-size:clamp(30px,4vw,48px);line-height:1.12;letter-spacing:-.025em;font-weight:800;margin-bottom:28px}
+h3{font-size:21px;line-height:1.25;font-weight:800}
+.btn{display:inline-block;background:var(--sun);color:var(--ink);font-weight:800;padding:15px 30px;border-radius:8px;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.top{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px var(--pad);background:var(--ind);color:#fff}
+.logo{font-size:23px;font-weight:800}
+.top nav{display:flex;align-items:center;gap:24px;font-size:15.5px;font-weight:600}
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;padding:clamp(44px,7vw,96px) var(--pad);background:var(--ind);color:#fff}
+.hero p{margin:18px 0 28px;font-size:20px;color:#D7D6F4;max-width:26em}
+.chat{display:grid;gap:12px}
+.b{width:fit-content;max-width:90%;padding:12px 18px;border-radius:16px;font-weight:700;font-size:20px;animation:in .5s ease-out backwards}
+.b:nth-child(1){background:#fff;color:var(--ink);border-bottom-left-radius:3px}
+.b:nth-child(2){background:var(--sun);color:var(--ink);justify-self:end;border-bottom-right-radius:3px;animation-delay:.5s}
+.b:nth-child(3){background:#fff;color:var(--ink);border-bottom-left-radius:3px;animation-delay:1s}
+.b:nth-child(4){background:var(--sun);color:var(--ink);justify-self:end;border-bottom-right-radius:3px;animation-delay:1.5s}
+@keyframes in{from{opacity:0;transform:translateY(14px) scale(.96)}}
+section{padding:clamp(56px,7vw,100px) var(--pad)}
+.soft{background:var(--soft)}
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.nums b{display:block;font-size:clamp(42px,5vw,64px);line-height:1;font-weight:800;color:var(--ind)}
+.nums span{color:var(--muted)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.tabs button{padding:11px 22px;border:1.5px solid var(--line);border-radius:8px;font-weight:700;transition:background .15s}
+.tabs button[aria-selected=true]{background:var(--ind);border-color:var(--ind);color:#fff}
+.panel{display:grid;grid-template-columns:1fr 1fr;gap:32px;padding:clamp(22px,3vw,36px);border:1.5px solid var(--line);border-radius:12px}
+.panel h3{font-size:27px;margin-bottom:8px}
+.panel p{color:var(--muted)}
+.panel li{position:relative;padding:6px 0 6px 24px}
+.panel li::before{content:"✓";position:absolute;left:0;color:var(--ind);font-weight:800}
+.line{position:relative;display:grid;gap:30px;padding-left:44px}
+.line::before{content:"";position:absolute;left:13px;top:6px;bottom:6px;width:4px;background:var(--line)}
+.fill{position:absolute;left:13px;top:6px;width:4px;height:0;background:var(--ind)}
+.line li{position:relative}
+.line li::before{content:"";position:absolute;left:-40px;top:3px;width:22px;height:22px;border-radius:50%;background:#fff;border:4px solid var(--ind)}
+.line p{color:var(--muted)}
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.ava{width:88px;height:88px;border-radius:50%;background:var(--ind);color:#fff;display:grid;place-items:center;font-size:30px;font-weight:800;margin-bottom:12px}
+.team div:nth-child(2) .ava{background:var(--sun);color:var(--ink)}
+.team p{color:var(--muted)}
+.switch{display:inline-flex;background:var(--line);border-radius:8px;padding:4px;margin-bottom:24px}
+.switch button{padding:9px 20px;border-radius:6px;font-weight:700}
+.switch button[aria-pressed=true]{background:#fff}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.plan{display:flex;flex-direction:column;padding:26px;background:#fff;border-radius:12px;border:1.5px solid var(--line)}
+.plan.top-p{border-color:var(--ind);border-width:3px}
+.plan .p{margin:12px 0;font-size:34px;font-weight:800;letter-spacing:-.02em}
+.plan .p small{font-size:15px;font-weight:600;color:var(--muted)}
+.plan p{color:var(--muted);margin-bottom:18px}
+.plan .btn{margin-top:auto;text-align:center}
+.say{max-width:760px}
+.say blockquote{font-size:clamp(22px,2.8vw,32px);line-height:1.3;font-weight:700;letter-spacing:-.015em;min-height:3.9em}
+.say cite{display:block;margin-top:12px;font-style:normal;color:var(--muted)}
+.arrows{display:flex;gap:8px;margin-top:18px}
+.arrows button{width:46px;height:46px;border-radius:50%;background:var(--ind);color:#fff;font-size:20px}
+details{border-bottom:1.5px solid var(--line);padding:16px 0;max-width:820px}
+summary{font-weight:800;font-size:19px;cursor:pointer}
+details p{margin-top:8px;color:var(--muted)}
+.order{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;background:var(--ind);color:#fff}
+.order p{color:#D7D6F4}
+.order h2{margin-bottom:12px}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.links a{padding:10px 16px;border:1.5px solid #6E6BD0;border-radius:8px;font-weight:700;font-size:15px}
+form{display:grid;gap:12px;background:#fff;color:var(--ink);padding:24px;border-radius:12px}
+label{display:grid;gap:4px;font-size:14px;font-weight:700}
+input,select{font:inherit;padding:12px 14px;border:1.5px solid var(--line);border-radius:7px;width:100%;background:#fff}
+form .btn{border:0;cursor:pointer;font:800 17px Manrope,sans-serif}
+.demo-msg{color:#127A43!important;font-weight:700;font-size:15px}
+footer{padding:22px var(--pad);background:var(--ink);color:#C9C8E6;font-size:14px}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s}
+.rv.in{opacity:1;transform:none}
+@media (max-width:820px){
+  .top nav a:not(.btn){display:none}
+  .hero,.panel,.order{grid-template-columns:1fr}
+  .nums{grid-template-columns:1fr 1fr}
+  .team,.plans{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.b{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="#">Гуфтор</a>
+  <nav><a href="#programs">Программы</a><a href="#prices">Цены</a><a class="btn" style="padding:9px 18px;font-size:15px" href="#order">Записаться</a></nav>
+</header>
+<main>
+<div class="hero">
+  <div>
+    <h1>Заговорите <span style="white-space:nowrap">по-английски</span> за 6 месяцев</h1>
+    <p>Живые уроки в маленьких группах. Первое занятие бесплатно.</p>
+    <a class="btn" href="#order">Записаться на пробный урок</a>
+  </div>
+  <div class="chat" aria-hidden="true">
+    <div class="b">Hello! How are you?</div>
+    <div class="b">I'm great, thanks!</div>
+    <div class="b">Where are you from?</div>
+    <div class="b">I'm from Dushanbe.</div>
+  </div>
+</div>
+
+<section>
+  <div class="nums">
+    <div class="rv"><b data-n="8">0</b><span>лет работаем</span></div>
+    <div class="rv"><b data-n="2400">0</b><span>выпускников</span></div>
+    <div class="rv"><b data-n="8">0</b><span>человек в группе</span></div>
+    <div class="rv"><b data-n="94" data-s="%">0</b><span>доходят до конца</span></div>
+  </div>
+</section>
+
+<section class="soft" id="programs">
+  <h2 class="rv">Выберите программу</h2>
+  <div class="tabs" role="tablist" id="tabs"></div>
+  <div class="panel rv" style="background:#fff" id="panel"></div>
+</section>
+
+<section>
+  <h2 class="rv">Как проходит обучение</h2>
+  <ul class="line" id="line">
+    <li class="rv"><h3>Пробный урок</h3><p>Определяем уровень и цель.</p></li>
+    <li class="rv"><h3>Группа по уровню</h3><p>До 8 человек, удобное время.</p></li>
+    <li class="rv"><h3>Занятия 3 раза в неделю</h3><p>70% времени вы говорите сами.</p></li>
+    <li class="rv"><h3>Итоговый тест и сертификат</h3><p>Видите свой результат на бумаге.</p></li>
+  </ul>
+</section>
+
+<section class="soft">
+  <h2 class="rv">Преподаватели</h2>
+  <div class="team">
+    <div class="rv"><div class="ava">ЗА</div><h3>Зарина Алиева</h3><p>IELTS 8.0, опыт 9 лет</p></div>
+    <div class="rv"><div class="ava">ДМ</div><h3>Дилшод Мирзоев</h3><p>Разговорный и деловой английский</p></div>
+    <div class="rv"><div class="ava">НС</div><h3>Нигина Сафарова</h3><p>Занятия для детей и подростков</p></div>
+  </div>
+</section>
+
+<section id="prices">
+  <h2 class="rv">Цены</h2>
+  <div class="switch" role="group" aria-label="Период оплаты">
+    <button aria-pressed="true" data-m="1">За месяц</button>
+    <button aria-pressed="false" data-m="3">За 3 месяца, скидка 15%</button>
+  </div>
+  <div class="plans">
+    <div class="plan rv"><h3>Группа</h3><div class="p" data-p="300"></div><p>12 занятий в месяц, до 8 человек</p><a class="btn" href="#order">Выбрать</a></div>
+    <div class="plan top-p rv"><h3>Мини-группа</h3><div class="p" data-p="500"></div><p>12 занятий в месяц, до 4 человек</p><a class="btn" href="#order">Выбрать</a></div>
+    <div class="plan rv"><h3>Индивидуально</h3><div class="p" data-p="900"></div><p>12 занятий в месяц, один на один</p><a class="btn" href="#order">Выбрать</a></div>
+  </div>
+</section>
+
+<section class="soft">
+  <h2 class="rv">Отзывы</h2>
+  <div class="say">
+    <div aria-live="polite"><blockquote id="q"></blockquote><cite id="c"></cite></div>
+    <div class="arrows"><button id="pv" aria-label="Предыдущий отзыв">←</button><button id="nx" aria-label="Следующий отзыв">→</button></div>
+  </div>
+</section>
+
+<section>
+  <h2 class="rv">Частые вопросы</h2>
+  <details><summary>Я совсем не знаю английский. Подойдёт?</summary><p>Да, у нас есть группы для начинающих с нуля.</p></details>
+  <details><summary>Что если пропущу занятие?</summary><p>Отработаете его с другой группой бесплатно.</p></details>
+  <details><summary>Можно платить частями?</summary><p>Да, оплата помесячная.</p></details>
+</section>
+
+<section class="order" id="order">
+  <div class="rv"><h2>Первый урок бесплатно</h2><p>Оставьте телефон, и мы подберём удобное время.</p>
+    <div class="links"><a href="#order">WhatsApp</a><a href="#order">Telegram</a><a href="tel:+992000000000">+992 00 000 00 00</a></div></div>
+  <form data-demo class="rv">
+    <label>Ваше имя<input required placeholder="Фируз"></label>
+    <label>Телефон<input required type="tel" placeholder="+992"></label>
+    <label>Программа<select><option>Для взрослых</option><option>Для детей</option><option>Подготовка к IELTS</option></select></label>
+    <button class="btn">Записаться</button>
+  </form>
+</section>
+</main>
+<footer>Гуфтор, школа английского. Пример сайта, школа и цены вымышлены.</footer>
+<script src="../_shared/demo.js"></script>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+// Программы
+const P=[
+ {t:'Для взрослых',h:'Разговорный английский',d:'Для работы, поездок и общения.',i:['6 месяцев обучения','Занятия утром и вечером','Разговорный клуб каждую неделю']},
+ {t:'Для детей',h:'Английский с 7 лет',d:'Учим через игры и живое общение.',i:['Группы по возрасту','Домашние задания в приложении','Отчёт родителям каждый месяц']},
+ {t:'IELTS',h:'Подготовка к IELTS',d:'Для поступления и работы за рубежом.',i:['3 месяца интенсива','Пробные экзамены','Разбор всех четырёх частей']}];
+$('#tabs').innerHTML=P.map((p,i)=>`<button role="tab" aria-selected="${!i}" data-t="${i}">${p.t}</button>`).join('');
+function tab(i){const p=P[i];$$('#tabs button').forEach((b,j)=>b.setAttribute('aria-selected',j===i));
+ $('#panel').innerHTML=`<div><h3>${p.h}</h3><p>${p.d}</p></div><ul>${p.i.map(x=>`<li>${x}</li>`).join('')}</ul>`}
+$$('#tabs button').forEach(b=>b.onclick=()=>tab(+b.dataset.t));tab(0);
+// Цены: переключатель периода
+function price(m){$$('[data-m]').forEach(b=>b.setAttribute('aria-pressed',+b.dataset.m===m));
+ $$('[data-p]').forEach(e=>{const v=+e.dataset.p,s=m===3?Math.round(v*3*.85):v;e.innerHTML=`${s.toLocaleString('ru-RU')} <small>сомони / ${m===3?'3 мес.':'мес.'}</small>`})}
+$$('[data-m]').forEach(b=>b.onclick=()=>price(+b.dataset.m));price(1);
+// Отзывы
+const R=[['За полгода начала свободно общаться с клиентами из Дубая.','Мадина, менеджер'],['Сын сам просится на занятия, а оценка в школе выросла до пятёрки.','Шахноза, мама ученика'],['Сдал IELTS на 7.0 с первого раза и поступил в университет.','Фарход, студент']];
+let r=0;function say(d){r=(r+d+R.length)%R.length;$('#q').textContent='«'+R[r][0]+'»';$('#c').textContent=R[r][1]}
+$('#pv').onclick=()=>say(-1);$('#nx').onclick=()=>say(1);say(0);
+// Линия этапов заполняется при прокрутке
+const line=$('#line'),fill=document.createElement('div');fill.className='fill';line.prepend(fill);
+function onScroll(){const b=line.getBoundingClientRect();fill.style.height=Math.max(0,Math.min(b.height-12,innerHeight*.75-b.top))+'px'}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+// Появление и счётчики
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');
+ const n=e.target.querySelector('[data-n]');
+ if(n){const N=+n.dataset.n,S=n.dataset.s||'',t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/1100);n.textContent=Math.round(N*k*(2-k)).toLocaleString('ru-RU')+S;if(k<1)requestAnimationFrame(f)})(t0)}
+ io.unobserve(e.target)}),{threshold:.15});
+$$('.rv').forEach(e=>io.observe(e));
+</script>
+</body>
+</html>

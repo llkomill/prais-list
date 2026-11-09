@@ -25,11 +25,20 @@
       <p class="example"><a href="${p.example}"${/^https?:/.test(p.example) ? ' target="_blank" rel="noopener"' : ''}>Посмотреть пример</a></p>
     </article>`).join('');
 
-  const table = (rows) => `<table>
-    <thead><tr><th>Услуга</th><th class="r">Цена, сом.</th></tr></thead>
-    <tbody>${rows.map(([name, pre, v, suf]) => {
-      const val = pre === '+' ? `+${v ?? '00–00'}% к стоимости` : `${pre ? pre + ' ' : ''}${fmt(v)}${suf ? ' ' + suf : ''}`;
-      return `<tr><td>${name}</td><td class="r nw">${val}</td></tr>`;
-    }).join('')}</tbody></table>`;
-  $('#addons').innerHTML = table(addons.content) + table(addons.features);
+  // Допуслуги: общая таблица с группами, наценка за срочность — отдельной плашкой
+  const isUrgent = (r) => r[1] === '+';
+  const amount = ([, pre, v, suf]) => `${pre ? `<small>${pre}</small> ` : ''}${fmt(v)} <small>сом.${suf ? ' ' + suf : ''}</small>`;
+  const group = (title, rows) => `<tbody>
+    <tr class="grp"><th colspan="2" scope="colgroup">${title}</th></tr>
+    ${rows.filter((r) => !isUrgent(r)).map((r) => `<tr><td>${r[0]}</td><td class="amt">${amount(r)}</td></tr>`).join('')}
+  </tbody>`;
+  const urgent = [...addons.content, ...addons.features].filter(isUrgent).map(([name, , v]) => {
+    const [title, sub] = name.split(' (');
+    return `<div class="urgent"><div><b>${title}</b>${sub ? `<span>${sub.replace(')', '')}</span>` : ''}</div><strong>+${v}% <small>к стоимости</small></strong></div>`;
+  }).join('');
+  $('#addons').innerHTML = `<div class="svc-wrap"><table class="svc">
+    <thead><tr><th>Услуга</th><th class="r">Цена</th></tr></thead>
+    ${group('Страницы и контент', addons.content)}
+    ${group('Функции и интеграции', addons.features)}
+  </table></div>${urgent}`;
 })();
